@@ -6,7 +6,6 @@
 Option Strict On
 Option Explicit On
 Module BetterCalculator
-
     Sub Main()
 
     End Sub
