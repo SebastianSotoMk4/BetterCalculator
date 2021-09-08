@@ -2,7 +2,7 @@
 'RCET0265
 'Fall 2021
 'BetterCalculator
-'URL
+'https://github.com/SebastianSotoMk4/BetterCalculator.git
 Option Strict On
 Option Explicit On
 Module BetterCalculator
