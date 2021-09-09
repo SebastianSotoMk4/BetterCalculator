@@ -7,24 +7,27 @@ Option Strict On
 Option Explicit On
 Module BetterCalculator
     Sub Main()
+        ' ask how to like, readline with text
+
         Dim userInput As String
         Dim numOne As Integer
         Dim NumTwo As Integer
         Dim result As Integer
+        Console.WriteLine("Plese enter two numbers. Enter Q at any time to quit.")
+        Console.ReadLine("Enter a number:")
+        Console.WriteLine($"You entered {userInput}")
+        Console.ReadLine()
+        'Do Until userInput = "q" Or userInput = "Q" ' the Do Untill should allow the all functions untill a "Q" is enterd
 
-        Do Until userInput = "q" Or userInput = "Q" ' the Do Untill should allow the all functions untill a "Q" is enterd
-            Console.WriteLine("Plese enter two numbers. Enter Q at any time to quit.")
-            Console.WriteLine("Enter a number:")
-            Console.WriteLine($"You entered {userInput}")
-            Try
-                numOne = CInt(userInput)
+        '    Try
+        '        numOne = CInt(userInput)
 
-            Catch ex As Exception
+        '    Catch ex As Exception
 
-            End Try
+        '    End Try
 
-            Console.WriteLine("")
-        Loop
+        '    Console.WriteLine("")
+        'Loop
     End Sub
 
 End Module
