@@ -5,29 +5,48 @@
 'https://github.com/SebastianSotoMk4/BetterCalculator.git
 Option Strict On
 Option Explicit On
+Option Compare Text
 Module BetterCalculator
     Sub Main()
-        ' ask how to like, readline with text
-
-        Dim userInput As String
+        Dim userNumOne As String
+        Dim userNumTwo As String
+        Dim numberValid As Boolean
         Dim numOne As Integer
-        Dim NumTwo As Integer
+        Dim numTwo As Integer
         Dim result As Integer
         Console.WriteLine("Plese enter two numbers. Enter Q at any time to quit.")
-        Console.ReadLine("Enter a number:")
-        Console.WriteLine($"You entered {userInput}")
-        Console.ReadLine()
-        'Do Until userInput = "q" Or userInput = "Q" ' the Do Untill should allow the all functions untill a "Q" is enterd
+        userNumOne = Console.ReadLine()
+        Console.WriteLine($"You entered {userNumOne}")
+        Console.WriteLine("Enter another number")
+        userNumTwo = Console.ReadLine()
+        Console.WriteLine($"You entered {userNumTwo}")
+        Do
+            Try
+                numOne = CInt(userNumOne)
 
-        '    Try
-        '        numOne = CInt(userInput)
 
-        '    Catch ex As Exception
 
-        '    End Try
+            Catch ex As Exception
 
-        '    Console.WriteLine("")
-        'Loop
+            End Try
+            Try
+
+                numTwo = CInt(userNumTwo)
+                numberValid = True
+                result = numOne + numTwo
+                Console.WriteLine($"{numOne} + {numTwo} = {result}")
+                Console.WriteLine("Enter a Whole Number Please")
+                Console.WriteLine("Enter First number")
+                userNumOne = Console.ReadLine()
+                Console.WriteLine("Enter Second number")
+                userNumTwo = Console.ReadLine()
+
+            Catch ex As Exception
+                If userNumTwo <> "q" Or userNumOne <> "q" Then
+                    numberValid = False
+                End If
+            End Try
+        Loop Until numberValid = False
     End Sub
 
 End Module
