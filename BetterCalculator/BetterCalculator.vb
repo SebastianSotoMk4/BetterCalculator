@@ -8,6 +8,7 @@ Option Explicit On
 Option Compare Text
 Module BetterCalculator
     Sub Main()
+        Console.WriteLine("Plese enter two numbers. Enter Q at any time to Quit")
 
 
 
