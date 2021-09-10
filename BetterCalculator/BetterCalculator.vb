@@ -10,7 +10,7 @@ Module BetterCalculator
     Sub Main()
         Dim inputOne As String
         Dim inputTwo As String
-        Dim operat As String 'operator choice
+        Dim operat As String 'operator choice + - * \
         Dim numOneValid As Boolean
         Dim numTwoValid As Boolean
         Dim result As Integer
@@ -28,7 +28,7 @@ Module BetterCalculator
                     Console.WriteLine($"You entered {inputOne}")
                     numOne = CInt(inputOne)
                     numOneValid = True
-                Catch ex As Exception
+                Catch ex As Exception  'IF the catch is triggerd Quit will be checked for. If not a Q then user will be prompted to re enter a number
                     If inputOne = "q" Then
                         quit = True
                     ElseIf inputOne <> "q" Then
@@ -37,7 +37,7 @@ Module BetterCalculator
                 End Try
             Loop
 
-            Do Until numTwoValid = True Or quit = True '
+            Do Until numTwoValid = True Or quit = True 'If quit is True from previous loop then this loop will not trigger.
                 Try
                     Console.WriteLine("Enter a number:")
                     inputTwo = Console.ReadLine()
@@ -68,7 +68,7 @@ Module BetterCalculator
                 'If quit is true, do nothing
             ElseIf quit = False Then
                 operat = Console.ReadLine()
-                If operat = "q" Then
+                If operat = "q" Then ' if the user types Q in the operator select, the main loop will end, closing the program.
                     quit = True
                 ElseIf operat = "1" Then
                     result = numOne + numTwo
@@ -83,7 +83,7 @@ Module BetterCalculator
                     result = numOne \ numTwo
                     Console.WriteLine($"{numOne} \ {numTwo} = {result}")
                 End If
-                numOneValid = False
+                numOneValid = False ' Resets the Number is valid checks
                 numTwoValid = False
             End If
         Loop
