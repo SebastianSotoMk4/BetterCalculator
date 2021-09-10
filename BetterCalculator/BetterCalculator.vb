@@ -11,28 +11,45 @@ Module BetterCalculator
         Dim inputOne As String
         Dim inputTwo As String
         Dim operat As String
+        Dim numOneGood As Boolean
+        Dim numTwoGood As Boolean
         Dim intOperat As Integer
         Dim result As Integer
         Dim numOne As Integer
         Dim numTwo As Integer
 
         Console.WriteLine("Plese enter two numbers. Enter Q at any time to Quit")
+
         '///////////////////////////////////////////////////////////////////////////////
-        Try
-            Console.WriteLine("Enter a number:")
-            inputOne = Console.ReadLine()
-            Console.WriteLine($"You entered {inputOne}")
-            numOne = CInt(inputOne)
-        Catch ex As Exception
-
-        End Try
+        Do
+            Try
+                Console.WriteLine("Enter a number:")
+                inputOne = Console.ReadLine()
+                Console.WriteLine($"You entered {inputOne}")
+                numOne = CInt(inputOne)
+                numOneGood = True
+            Catch ex As Exception
+                Console.WriteLine($"You entered: {inputOne} , please enter a whole number")
+            End Try
+        Loop Until numOneGood = True
 
         '////////////////////////////////////////////////////////////////////////////////
-        Console.WriteLine("Enter a number:")
-        inputTwo = Console.ReadLine()
-        Console.WriteLine($"You entered {inputTwo}")
-        numTwo = CInt(inputTwo)
+
+        Do
+            Try
+                Console.WriteLine("Enter a number:")
+                inputTwo = Console.ReadLine()
+                Console.WriteLine($"You entered {inputTwo}")
+                numTwo = CInt(inputTwo)
+                numTwoGood = True
+
+            Catch ex As Exception
+                Console.WriteLine($"You entered: {inputOne} , please enter a whole number")
+            End Try
+        Loop Until numTwoGood = True
+
         '////////////////////////////////////////////////////////////////////////////////
+
         Console.WriteLine("Choose one of the following options:")
         Console.WriteLine("1. ADD")
         Console.WriteLine("2. Subtract")
@@ -42,15 +59,18 @@ Module BetterCalculator
         operat = Console.ReadLine()
         If operat = "1" Then
             result = numOne + numTwo
+            Console.WriteLine($"{numOne} + {numTwo} = {result}")
         ElseIf operat = "2" Then
             result = numOne - numTwo
+            Console.WriteLine($"{numOne} - {numTwo} = {result}")
         ElseIf operat = "3" Then
             result = numOne * numTwo
+            Console.WriteLine($"{numOne} * {numTwo} = {result}")
         ElseIf operat = "4" Then
             result = numOne \ numTwo
+            Console.WriteLine($"{numOne} \ {numTwo} = {result}")
         End If
 
-        Console.WriteLine(result)
 
 
 
