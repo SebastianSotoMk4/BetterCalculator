@@ -13,10 +13,11 @@ Module BetterCalculator
         Dim operat As String 'operator choice + - * \
         Dim numOneValid As Boolean
         Dim numTwoValid As Boolean
+        Dim operatValid As Boolean
+        Dim quit As Boolean
         Dim result As Integer
         Dim numOne As Integer
         Dim numTwo As Integer
-        Dim quit As Boolean
 
         Do While quit = False
             Console.WriteLine("Plese enter two numbers. Enter Q at any time to Quit")
@@ -55,7 +56,7 @@ Module BetterCalculator
             Loop
 
             If quit = True Then
-                'If quit is true, do nothing.
+                'Do nothing.
             ElseIf quit = False Then
                 Console.WriteLine("Choose one of the following options:")
                 Console.WriteLine("1. ADD")
@@ -64,28 +65,39 @@ Module BetterCalculator
                 Console.WriteLine("4. Divide")
             End If
 
-            If quit = True Then
-                'If quit is true, do nothing
-            ElseIf quit = False Then
-                operat = Console.ReadLine()
-                If operat = "q" Then ' if the user types Q in the operator select, the main loop will end, closing the program.
-                    quit = True
-                ElseIf operat = "1" Then
-                    result = numOne + numTwo
-                    Console.WriteLine($"{numOne} + {numTwo} = {result}")
-                ElseIf operat = "2" Then
-                    result = numOne - numTwo
-                    Console.WriteLine($"{numOne} - {numTwo} = {result}")
-                ElseIf operat = "3" Then
-                    result = numOne * numTwo
-                    Console.WriteLine($"{numOne} * {numTwo} = {result}")
-                ElseIf operat = "4" Then
-                    result = numOne \ numTwo
-                    Console.WriteLine($"{numOne} \ {numTwo} = {result}")
+            Do
+                If quit = True Then
+                    'Do nothing
+                ElseIf quit = False Then
+                    operat = Console.ReadLine()
+                    If operat = "1" Or operat = "2" Or operat = "3" Or operat = "4" Or operat = "q" Then
+                        operatValid = True
+                    ElseIf operatValid = False Then
+                        Console.WriteLine("Please select option 1, 2, 3 ,4 or Q to Quit")
+                    End If
                 End If
-                numOneValid = False ' Resets the Number is valid checks
-                numTwoValid = False
+
+            Loop Until operatValid = True Or quit = True
+
+            If operat = "q" Then ' if the user types Q in the operator select, the main loop will end, closing the program.
+                quit = True
+            ElseIf operat = "1" Then
+                result = numOne + numTwo
+                Console.WriteLine($"{numOne} + {numTwo} = {result}")
+            ElseIf operat = "2" Then
+                result = numOne - numTwo
+                Console.WriteLine($"{numOne} - {numTwo} = {result}")
+            ElseIf operat = "3" Then
+                result = numOne * numTwo
+                Console.WriteLine($"{numOne} * {numTwo} = {result}")
+            ElseIf operat = "4" Then
+                result = numOne \ numTwo
+                Console.WriteLine($"{numOne} \ {numTwo} = {result}")
             End If
+
+            numOneValid = False 'Resets valid checks
+            numTwoValid = False
+            operatValid = False
         Loop
         Console.WriteLine("Have a good day!")
         Console.WriteLine("Press enter to close program")
